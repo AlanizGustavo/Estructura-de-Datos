@@ -170,18 +170,18 @@ public class ArbolBin {
         }
     }
     
-    public Lista listarPostorden(){
+    public Lista listarPosorden(){
          //RETORNA UNA LISTA CO LOS ELEMENTOS DEL ARBOL EN POSTORDEN
         Lista lis=new Lista();
-        listarPostordenAux(this.raiz,lis);
+        listarPosordenAux(this.raiz,lis);
         return lis;
     }
     
-    private void listarPostordenAux(NodoArbol nodo, Lista lis){
+    private void listarPosordenAux(NodoArbol nodo, Lista lis){
         if(nodo!=null){ 
             //RECORRE A SUS HIJOS EN POSTORDEN
-            listarPostordenAux(nodo.getIzquierdo(),lis);
-            listarPostordenAux(nodo.getDerecho(),lis);
+            listarPosordenAux(nodo.getIzquierdo(),lis);
+            listarPosordenAux(nodo.getDerecho(),lis);
             
              //VISITA EL ELEMENTO EN EL NODO
             lis.insertar(nodo.getElemento(),lis.longitud()+1);
