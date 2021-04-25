@@ -28,21 +28,27 @@ public class Cola {
     }
     
 //MODIFICADORAS
+    
+//PONER ---------------------------------------------------------------    
     public boolean poner(Object elemento){
-        boolean exito=false;
+        //METODO QUE AGREGA UN ELEMENTO A LA COLA
+        boolean exito=false;                //SI NO LA AGREGA POR COLA LLENA DEVUELVE FALSE
         if((this.fin+1)%this.TAMANIO!=this.frente){
             arreglo[this.fin]=elemento;
             this.fin=(this.fin+1)%this.TAMANIO;
-            exito=true;
+            exito=true;             //EN CASO DE QUE AGREGUE CON EXITO RETORNA TRUE
         }
         
         return exito;
     }
+ 
+//SACAR ---------------------------------------------------------------    
     
     public boolean sacar(){
-        boolean exito=true;
+        //METODO QUE QUITA UN ELEMENTO DE LA COLA
+        boolean exito=true;         //EN CASO DE TENER EXITO DEVUELVE TRUE
         
-        if(this.esVacia()){
+        if(this.esVacia()){         //EN CASO DE COLA VACIA RETORNA FALSE
             exito=false;
         }
         else{
@@ -53,27 +59,39 @@ public class Cola {
     }
     
 //OBSERVADORAS    
+    
+//OBTENER FRENTE ---------------------------------------------------------------    
+    
     public Object obtenerFrente(){
+        //METODO QUE DEVUELVE EL ELEMENTO QUE SE ENCUENTRA EN EL FRENTE DE LA COLA
         Object exito;
         if(!this.esVacia()){
-            exito=arreglo[this.frente];
+            exito=arreglo[this.frente];     //EN CASO DE TENER ELEMENTOS DEVUELVE EL ELEMENTO EN EL FRENTE
         }
         else{
-            exito=null;
+            exito=null;                 //EN CASO DE COLA VACIA DEVUELVE NULL
         }
         return exito;
     }
+
+//ES VACIA ---------------------------------------------------------------
     
     public boolean esVacia(){
+        //METODO QUE VERIFICA SI LA COLA ES VACIA O NO
         boolean exito=false;
         if(this.frente==this.fin){
-            exito=true;
+            exito=true;     //EN CASO DE SER UNA COLA VACIA DEVUELVE TRUE
         }
         return exito;
     }
     
 //PROPIAS DEL TIPO
+    
+//VACIAR ---------------------------------------------------------------    
+    
     public void vaciar(){
+        //METODO QUE VACIA LA COLA
+        //AL SER ESTATICA LA COLA, DEBE PONER EN NULL EN TODAS LAS POSICIONES DEL ARREGLO DONDE POSEE ELEMENTOS
         int i;
         if(this.frente<this.fin){
             for(i=this.frente;i<this.fin;i++){
@@ -93,7 +111,10 @@ public class Cola {
         this.frente=0;
     }
     
+//CLONAR ---------------------------------------------------------------    
+    
     public Cola clone(){
+        //METODO QUE CLONA LA COLA
         Cola copia=new Cola();
         copia.frente=this.frente;
         copia.fin=this.fin;
@@ -101,6 +122,8 @@ public class Cola {
         return copia;
     }
     
+
+//TO STRING ---------------------------------------------------------------
     
     public String toString(){
         int contador=this.frente;

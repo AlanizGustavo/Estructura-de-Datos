@@ -23,7 +23,7 @@ public class Lista {
     }
     
     //MODIFICADORES
-    
+//INSERTAR ---------------------------------------------------------------    
     public boolean insertar(Object nuevoElemento, int pos){
         //INSERTA EL ELEMENTO NUEVO EN LA POSICION POS
         //DETECTA Y REPORTA ERROR DE POSICION INVALIDA
@@ -54,20 +54,23 @@ public class Lista {
         //NUNCA HAY ERROR DE LISTA LLENA, ENTONCES DEVUELVE TRUE
         return exito;
     }
+
+//ELIMINAR ---------------------------------------------------------------
     
     public boolean eliminar(int pos){
+        //MODULO QUE ELIMINA UN NODO EN UNA POSICION DADA
         boolean exito=true;
         if(pos<1 || pos>this.longitud){
-            exito=false;
-        }
+            exito=false;                //SI LA POSICION A EVALUAR NO SE ENCUENTRA DENTRO DE LOS 
+        }                               //LIMITES DE LA LISTA RETORNA FALSE
         else{
             if(pos==1){
-                this.cabecera=this.cabecera.getEnlace();
-                this.longitud--;
+                this.cabecera=this.cabecera.getEnlace();        //CASO ESPECIAL: ELIMINAR EN POS 1
+                this.longitud--;                                //SE ASIGNA UNA NUEVA CABECERA Y SE DESCUENTA EN UNA UNIDAD LA LONGITUD
             }
             else{
-                Nodo aux=this.cabecera;
-                int i=1;
+                Nodo aux=this.cabecera;                 //EN LAS DEMAS POSICIONES A ELIMINAR. SE ENCUENTRA LA POSICION ANTERIOR
+                int i=1;                                //Y SE SETEA UN ENLACE DE ESE NODO AL SIGUIENTE DEL QUE SE QUIERE ELIMINAR
                 while(i<pos-1){
                     aux=aux.getEnlace();
                     i++;
@@ -78,16 +81,22 @@ public class Lista {
         }
         return exito;
     }
+    
+//VACIAR ---------------------------------------------------------------    
     public void vaciar(){
+        //METODO QUE VACIA LA LISTA
         this.cabecera=null;
         this.longitud=0;
     }
     
     //OBSERVADORAS
+
+//RECUPERAR ---------------------------------------------------------------
     
     public Object recuperar(int pos){
+        //METODO QUE DEVUELVE EL ELEMENTO QUE SE ENCUENTRA EN UNA POSICION DADA
         Object elemento;
-        if(pos<1 || pos>this.longitud){
+        if(pos<1 || pos>this.longitud){         //SI NO SE DA UNA POSICION CORRECTA DEVUELVE NULL
             elemento=null;
         }
         else{
@@ -101,15 +110,18 @@ public class Lista {
         }
         return elemento;
     }
+
+//LOCALIZAR ---------------------------------------------------------------
     
     public int localizar(Object buscado){
+        //METODO QUE DEVUELVE LA POSICION DE UN ELEMENTO QUE SE BUSCA
         int pos=-1, contador=1;
         boolean encontrado=false;
-        if(!this.esVacia()){
+        if(!this.esVacia()){                    //SI NO ES VACIA 
             Nodo aux=this.cabecera;
             while(aux!=null && encontrado==false){
                 if(aux.getElem().equals(buscado)){
-                    encontrado=true;
+                    encontrado=true;            //SI SE ENCUENTRA CAMBIA LA BANDERA A TRUE
                     pos=contador;
                 }
                 else{
@@ -120,20 +132,28 @@ public class Lista {
         }
         return pos;
     }
+//LONGITUD --------------------------------------------------------------- 
     
     public int longitud(){
+        //METODO QUE DEVUELVE LA LONGITUD DE LA LISTA
         return this.longitud;
     }
     
+//ES VACIA ---------------------------------------------------------------    
+    
     public boolean esVacia(){
+        //METODO QUE VERIFICA SI LA LISTA ES VACIA O NO
         boolean exito=false;
         if(this.longitud==0){
-            exito=true;
+            exito=true;             //EN CASO DE QUE NO TENGA ALGUN ELEMENTO DEVUEVE TRUE
         }
         return exito;
     }
+
+//CLONAR ---------------------------------------------------------------
     
     public Lista clone(){
+        //METODO QUE CLONA LA LISTA
         Lista clon=new Lista();                                                  //CREO UNA LISTA NUEVA
         if(!this.esVacia()){
             Nodo aux=this.cabecera.getEnlace();
@@ -153,8 +173,11 @@ public class Lista {
         }    
             return clon;
     }
+
+//INVERTIR ---------------------------------------------------------------
     
     public void invertir(){
+        //METODO QUE INVIERTE LA LISTA
           Nodo ultimo=inviertoLista(this.cabecera);
           ultimo.setEnlace(null);  
     }
@@ -172,6 +195,7 @@ public class Lista {
     
     
     public void eliminarApariciones(Object x){
+        //METODO QUE ELIMINA LAS APARICIONES DE UN ELEMENTO DADO
         while(this.cabecera!=null && this.cabecera.getElem().equals(x)){
             this.cabecera=this.cabecera.getEnlace();
             this.longitud--;
@@ -189,6 +213,8 @@ public class Lista {
             }
         } 
     } 
+
+//TO STRING ---------------------------------------------------------------
     
     public String toString(){
         String texto="",salida;

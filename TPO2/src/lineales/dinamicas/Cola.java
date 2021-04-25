@@ -23,22 +23,27 @@ public class Cola {
     }
     
     //MODIFICADORAS
+
+//PONER ---------------------------------------------------------------
     
     public boolean poner(Object elemento){
         //MODULO QUE AGREGA UN ELEMENTO A LA COLA
         Nodo nuevo=new Nodo(elemento,null);
-        if(this.esVacia()){                                                     //SI ESTA VACIA.... AGREGA EL NODO Y
-            this.frente=nuevo;                                                  //SETEA EL FRENTE Y EL FIN AL NUEVO NODO
+        if(this.esVacia()){                 //SI ESTA VACIA.... AGREGA EL NODO Y
+            this.frente=nuevo;               //SETEA EL FRENTE Y EL FIN AL NUEVO NODO
             this.fin=nuevo;
         }
         else{
-            this.fin.setEnlace(nuevo);                                          //EN CASO DE TENER ELEMENTOS SETEA ENLACE AL 
-            this.fin=nuevo;                                                     //NUEVO NODO
+            this.fin.setEnlace(nuevo);         //EN CASO DE TENER ELEMENTOS SETEA ENLACE AL 
+            this.fin=nuevo;                       //NUEVO NODO
         }
         return true;
     }
+
+//SACAR ---------------------------------------------------------------
     
     public boolean sacar(){
+        //MODULO QUE QUITA EL PRIMER ELEMENTO DE UNA COLA
         boolean exito=true;
         if(this.frente==null){
             //la cola esta vacia, reporta error.
@@ -56,35 +61,41 @@ public class Cola {
     }
     
     //OBSERVADORAS
+
+//OBTENER FRENTE ---------------------------------------------------------------
     
     public Object obtenerFrente(){
         //MODULO QUE DEVUELVE EL ELEMENTO QUE SE ENCUENTRA EN EL NODO FRENTE
         Object elemento;
         if(!this.esVacia()){
-            elemento=this.frente.getElem();                                     //SI TIENE ELEMENTOS LA COLA, DEVUELVE EL ELEMENTO
+            elemento=this.frente.getElem();         //SI TIENE ELEMENTOS LA COLA, DEVUELVE EL ELEMENTO
         }
         else{
-            elemento=null;                                                      //SI ESTA VACIA DEVUELVE NULL
+            elemento=null;                         //SI ESTA VACIA DEVUELVE NULL
         }
         return elemento;
     }
+
+//ES VACIA ---------------------------------------------------------------
     
     public boolean esVacia(){
-        //NODO QUE VERIFICA SI LA COLA ESTA VACIA
+        //METODO QUE VERIFICA SI LA COLA ESTA VACIA
         boolean exito=false;
         if(this.frente==null){
-            exito=true;                                                         //SI LA COLA TIENE ELEMENTOS DEVUELVE TRUE
+            exito=true;                    //SI LA COLA NO TIENE ELEMENTOS DEVUELVE TRUE
         }
         return exito;
     }
-    
+
+//VACIAR ---------------------------------------------------------------
+    //METODO QUE VACIA LA COLA
     public void vaciar(){
         //MODULO QUE VACIA LA COLA
         this.frente=null;
         this.fin=null;
     }
     
-    
+//CLONAR ---------------------------------------------------------------    
     public Cola clone(){
         /*MODULO QUE CLONA UNA COLA*/
         Cola copia=new Cola();                                                  //CREO UNA COLA NUEVA
@@ -103,6 +114,8 @@ public class Cola {
         copia.fin=aux2;
         return copia;
     }
+
+//TO STRING---------------------------------------------------------------
     
     public String toString(){
         String texto="",salida;
