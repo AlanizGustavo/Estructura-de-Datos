@@ -87,11 +87,16 @@ public class ArbolGen {
     public Object padre(Object elem) {
         /*METODO QUE RECIBE ELEMENTO BUSCADO POR PARAMETRO Y LLAMA A UN METODO 
         PRIVADO ""padreAux PARA ENCONTRAR EL PADRE EN ARBOL GENERICO*/
-        Object elementoPadre = null;
+        NodoGen nodoPadre;
+        Object elementoPadre=null;
 
-        if (!this.esVacio() && buscarNodo(this.raiz, elem) != null && !this.raiz.getElem().equals(elem)) {
-            //SI EL ARBOL NO ESTA VACIO Y EL ELEMENTO NO ES NULL Y LA RAIZ NO ES EL ELEMENTO BUSCADO 
-            elementoPadre = padreAux(this.raiz, elem).getElem(); //LLAMAMOS AL METODO PRIVADO
+        if (!this.esVacio() && !this.raiz.getElem().equals(elem)) {
+            //SI EL ARBOL NO ESTA VACIO Y LA RAIZ NO ES EL ELEMENTO BUSCADO
+            
+            nodoPadre = padreAux(this.raiz, elem); //LLAMAMOS AL METODO PRIVADO
+            if(nodoPadre!=null){
+                elementoPadre=nodoPadre.getElem();
+            }
         }
 
         return elementoPadre;//EN CASO DE QUE LA RAIZ SEA EL ELEMENTO BUSCADO ESTE NO TIENE PADRE
