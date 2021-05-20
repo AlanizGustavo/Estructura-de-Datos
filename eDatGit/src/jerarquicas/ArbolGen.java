@@ -240,13 +240,9 @@ public class ArbolGen {
         NodoGen aux;
         NodoGen nuevo = new NodoGen(nodo.getElem(), null, null);
 
-        if (nodo.getHijoIzquierdo() != null) {
-            nuevo.setHijoIzquierdo(clonAux(nodo.getHijoIzquierdo()));
-        }
-
         //LLAMADOS RECURSIVOS CON LOS OTROS HIJOS DE nodo
         if (nodo.getHijoIzquierdo() != null) {
-            NodoGen hijo = nodo.getHijoIzquierdo().getHermanoDerecho();
+            NodoGen hijo = nodo.getHijoIzquierdo();
             NodoGen hijoCopia = nuevo.getHijoIzquierdo();
             while (hijo != null) {
                 hijoCopia.setHermanoDerecho(clonAux(hijo));
