@@ -177,13 +177,10 @@ public class ArbolGen {
             if (nodo.getElem().equals(buscado)) {
                 nivel = a + 1;
             } else {
-                if (nodo.getHijoIzquierdo() != null) {
-                    nivel = buscarNivel(nodo.getHijoIzquierdo(), buscado, a + 1);
-                }
-
+                
                 //LLAMADOS RECURSIVOS CON LOS OTROS HIJOS DE nodo
                 if (nodo.getHijoIzquierdo() != null) {
-                    NodoGen hijo = nodo.getHijoIzquierdo().getHermanoDerecho();
+                    NodoGen hijo = nodo.getHijoIzquierdo();
                     while (hijo != null && nivel == -1) {
                         nivel = buscarNivel(hijo, buscado, a + 1);
                         hijo = hijo.getHermanoDerecho();
@@ -211,13 +208,11 @@ public class ArbolGen {
                 exito = true;
             } else {
                 lis.insertar(nodo.getElem(), lis.longitud() + 1);
-                if (nodo.getHijoIzquierdo() != null) {
-                    exito = ancestrosAux(nodo.getHijoIzquierdo(), lis, buscado);
-                }
+                
 
                 //LLAMADOS RECURSIVOS CON LOS OTROS HIJOS DE nodo
                 if (nodo.getHijoIzquierdo() != null) {
-                    NodoGen hijo = nodo.getHijoIzquierdo().getHermanoDerecho();
+                    NodoGen hijo = nodo.getHijoIzquierdo();
                     while (hijo != null && !exito) {
                         exito = ancestrosAux(hijo, lis, buscado);
                         hijo = hijo.getHermanoDerecho();
@@ -274,14 +269,9 @@ public class ArbolGen {
             //VISTA DEL NODO nodo
             lis.insertar(nodo.getElem(), lis.longitud() + 1);
 
-            //LLAMADO RECURSIVO CON EL PRIMER HIJO DE nodo
-            if (nodo.getHijoIzquierdo() != null) {
-                listarPreordenAux(nodo.getHijoIzquierdo(), lis);
-            }
-
             //LLAMADOS RECURSIVOS CON LOS OTROS HIJOS DE nodo
             if (nodo.getHijoIzquierdo() != null) {
-                NodoGen hijo = nodo.getHijoIzquierdo().getHermanoDerecho();
+                NodoGen hijo = nodo.getHijoIzquierdo();
                 while (hijo != null) {
                     listarPreordenAux(hijo, lis);
                     hijo = hijo.getHermanoDerecho();
@@ -289,6 +279,8 @@ public class ArbolGen {
             }
         }
     }
+    
+    
 
     public Lista listarInorden() {
         Lista salida = new Lista();
@@ -325,14 +317,10 @@ public class ArbolGen {
 
     private void listarPosordenAux(NodoGen nodo, Lista lis) {
         if (nodo != null) {
-            //LLAMADO RECURSIVO CON EL PRIMER HIJO DE nodo
-            if (nodo.getHijoIzquierdo() != null) {
-                listarPosordenAux(nodo.getHijoIzquierdo(), lis);
-            }
-
+            
             //LLAMADOS RECURSIVOS CON LOS OTROS HIJOS DE nodo
             if (nodo.getHijoIzquierdo() != null) {
-                NodoGen hijo = nodo.getHijoIzquierdo().getHermanoDerecho();
+                NodoGen hijo = nodo.getHijoIzquierdo();
                 while (hijo != null) {
                     listarPosordenAux(hijo, lis);
                     hijo = hijo.getHermanoDerecho();
@@ -461,13 +449,10 @@ public class ArbolGen {
             if (nodo.getHijoIzquierdo() == null) {
                 lis.insertar(nodo.getElem(), lis.longitud() + 1);
             } else {
-                if (nodo.getHijoIzquierdo() != null) {
-                    fronteraAux(nodo.getHijoIzquierdo(), lis);
-                }
-
+                
                 //LLAMADOS RECURSIVOS CON LOS OTROS HIJOS DE nodo
                 if (nodo.getHijoIzquierdo() != null) {
-                    NodoGen hijo = nodo.getHijoIzquierdo().getHermanoDerecho();
+                    NodoGen hijo = nodo.getHijoIzquierdo();
                     while (hijo != null) {
                         fronteraAux(hijo, lis);
                         hijo = hijo.getHermanoDerecho();
@@ -538,11 +523,9 @@ public class ArbolGen {
                 
             } else {
                 actual.insertar(nodo.getElem(), actual.longitud() + 1);
+                
                 if (nodo.getHijoIzquierdo() != null) {
-                    res = listaQueJustificaLaAlturaAux(nodo.getHijoIzquierdo(), actual, res);  
-                }
-                if (nodo.getHijoIzquierdo() != null) {
-                    NodoGen hijo = nodo.getHijoIzquierdo().getHermanoDerecho();
+                    NodoGen hijo = nodo.getHijoIzquierdo();
                     while (hijo != null) {
                         res = listaQueJustificaLaAlturaAux(hijo, actual, res);
                         hijo = hijo.getHermanoDerecho();
