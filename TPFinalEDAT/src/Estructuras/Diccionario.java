@@ -257,6 +257,7 @@ public class Diccionario {
     }
 
     private NodoAVLDicc buscarCandidato(NodoAVLDicc nodo) {
+        int balanceo;
         NodoAVLDicc candidato = null;
         NodoAVLDicc padreCandidato = nodo;
         NodoAVLDicc hijo = nodo.getIzquierdo();
@@ -274,7 +275,12 @@ public class Diccionario {
                 }
             } else {
                 candidato=buscarCandidato(nodo.getIzquierdo());
-                padreCandidato.setIzquierdo(balancear(hijo));
+                padreCandidato.recalcularAltura();
+                balanceo = verificarBalanceo(padreCandidato);
+                if (Math.abs(balanceo) > 1) {
+                    padreCandidato.setIzquierdo(balancear(hijo));
+                }
+                
             }
             
         }
