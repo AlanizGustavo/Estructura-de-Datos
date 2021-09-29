@@ -96,13 +96,3 @@ preestablecido.
 del sistema al momento de terminar la carga inicial, anotar qué operaciones de ABM se
 realizan a lo largo de la ejecución (Ej: “Se crea la habitación 01”, “Se borró el desafío D1”,
 etc), y el estado del sistema completo al momento de terminar de ejecutarse.
-
-Condiciones y fechas de entrega
-● El programa debe realizarse de manera individual y además de subirlo a PEDCO debe
-presentarse a los docentes personalmente.
-● Al momento de la defensa, deberá presentar en papel el dibujo de la casa cargado (grafo) y
-la información de las puertas (AVL)
-● Los estudiantes que promocionan la materia tendrán tiempo de entrega hasta el 6 de
-agosto de 2021. No necesitan realizar los módulos marcados con (**)
-● Los estudiantes que no promocionan podrán entregarlo en cualquier momento, pero como
-mínimo deberán hacerlo 2 semanas antes de presentarse a rendir el final regular.
